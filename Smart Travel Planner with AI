@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Travel Planner with AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #0b5ed7;
+    }
+    label, input, select {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #0b5ed7;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #084298;
+    }
+    .output {
+      margin-top: 20px;
+      background: #e9f7ef;
+      padding: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Smart Travel Planner with AI</h1>
+    <label for="destination">Destination:</label>
+    <input type="text" id="destination" placeholder="Enter city e.g. Manali">
+
+    <label for="days">Number of Days:</label>
+    <input type="number" id="days" placeholder="e.g. 3">
+
+    <label for="interest">Interest:</label>
+    <select id="interest">
+      <option value="Nature">Nature</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Culture">Culture</option>
+      <option value="Relaxation">Relaxation</option>
+    </select>
+
+    <button onclick="generatePlan()">Generate Travel Plan</button>
+
+    <div class="output" id="output"></div>
+  </div>
+
+  <script>
+    function generatePlan() {
+      const city = document.getElementById("destination").value;
+      const days = document.getElementById("days").value;
+      const interest = document.getElementById("interest").value;
+
+      if (!city || !days) {
+        alert("Please fill all fields.");
+        return;
+      }
+
+      const output = document.getElementById("output");
+      output.innerHTML = `<h3>Your ${days}-Day Travel Plan to ${city}</h3>
+        <p><strong>Interest:</strong> ${interest}</p>
+        <p>Day 1: Explore the main attractions in ${city} based on ${interest}.</p>
+        <p>Day 2: Try local food and visit hidden gems.</p>
+        <p>Day 3: Relax and enjoy nature or local markets.</p>
+        <p><strong>Weather Suggestion:</strong> Best time to visit is between March and June.</p>
+        <p><strong>Note:</strong> Full AI-based suggestions coming soon with ChatGPT API & Maps!</p>`;
+    }
+  </script>
+</body>
+</html>
